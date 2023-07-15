@@ -12,5 +12,10 @@ class AppColor {
   static const Color buttonColor_2 = Color(0XFF707070);
 
 
+  static const MaterialColor? kToDark =  MaterialColor(
+    0XFFC5593A,  <int, Color>{
+  900:  Color(0XFFC5593A),},);
+
+
 
 }

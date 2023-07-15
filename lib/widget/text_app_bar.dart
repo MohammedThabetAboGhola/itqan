@@ -16,6 +16,7 @@ class TextAppBar extends StatelessWidget {
         fontFamily: MangerFonts.cairo,
         fontSize: 18,
         fontWeight: FontWeight.bold,
+        color: Colors.white
       ),
     );
   }
