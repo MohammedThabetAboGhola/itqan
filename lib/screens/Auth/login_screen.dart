@@ -8,6 +8,8 @@ import 'package:itqan/utils/style/app_color.dart';
 import '../../constants/manger_route.dart';
 import '../../widget/custom_text_filed.dart';
 
+import 'package:mysql1/mysql1.dart';
+
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -21,10 +23,14 @@ class _LoginScreenState extends State<LoginScreen> {
    late TextEditingController _identifyTextController;
    late TextEditingController _passwordTextController;
 
-  @override
+   late MySqlConnection _connection;
+   List<Map<String, dynamic>> _data = [];
+
+   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    _connectToDatabase();
     _identifyTextController = TextEditingController();
     _passwordTextController = TextEditingController();
   }
@@ -177,6 +183,38 @@ class _LoginScreenState extends State<LoginScreen> {
 
    }
 
+
+
+   Future<void> _connectToDatabase() async {
+     final settings = ConnectionSettings(
+       host: '10.0.2.2',
+       port: 3306,
+       user: 'root',
+       db: 'itqan_manager2',
+     );
+
+     try {
+       _connection = await MySqlConnection.connect(settings);
+       await _fetchData();
+     } catch (e) {
+       print('Error connecting to the database: $e');
+     }
+   }
+
+
+
+   Future<void> _fetchData() async {
+     final results = await _connection.query('SELECT * FROM supervisors JOIN persons ON persons.id = supervisors.person_id');
+     final std = await _connection.query('SELECT * FROM memorizations JOIN persons ON persons.id_card = memorizations.id_card');
+
+
+     print (std);
+
+     print(results);
+     setState(() {
+       _data = results.map((r) => r.fields).toList();
+     });
+   }
 
 
 }

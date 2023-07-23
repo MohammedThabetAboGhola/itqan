@@ -209,7 +209,6 @@ class _DailyLogScreenState extends State<DailyLogScreen> {
                     ),
                   ],
                 ),
-
               ],
             ),
           ),

@@ -215,16 +215,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: 35,
                     ),
                     const DrawerItem(
-                      title: MangerString.test1,
-                      icon: Icons.book_sharp,
-                      routName: Routes.test1Screen,
-                    ),
-                    const DrawerItem(
-                      title: MangerString.test2,
-                      icon: Icons.book_sharp,
-                      routName: Routes.test2Screen,
-                    ),
-                    const DrawerItem(
                       title: MangerString.daily,
                       icon: Icons.calendar_view_day,
                       routName: Routes.dailyLogScreen,
