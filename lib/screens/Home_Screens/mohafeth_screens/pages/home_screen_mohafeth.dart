@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:itqan/constants/manger_assets.dart';
 import 'package:itqan/constants/manger_fonts.dart';
 import 'package:itqan/constants/manger_route.dart';
 import 'package:itqan/constants/manger_string.dart';
 import 'package:itqan/utils/style/app_color.dart';
+import '../../../../widget/drawer_item.dart';
+import '../../../../widget/text_app_bar.dart';
+import '../../../../widget/user_avatar.dart';
 
-import '../../../constants/manger_assets.dart';
-import '../../../widget/drawer_item.dart';
-import '../../../widget/text_app_bar.dart';
-import '../../../widget/user_avatar.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+
+class HomeScreenMoa extends StatefulWidget {
+  const HomeScreenMoa({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<HomeScreenMoa> createState() => _HomeScreenMoaState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenMoaState extends State<HomeScreenMoa> {
   @override
   Widget build(BuildContext context) {
     return Directionality(
@@ -141,112 +142,94 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
 
         drawer: Drawer(
-          width: 275,
-          backgroundColor: Colors.white70,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.horizontal(left: Radius.circular(40)),
-          ),
-          child: Container(
-            decoration: const BoxDecoration(
-                color: Colors.white70,
-                borderRadius: BorderRadius.horizontal(
-                  left: Radius.circular(40),
-                ),
-                boxShadow: [
-                  BoxShadow(
-                      color: Color(0x3D000000),
-                      spreadRadius: 30,
-                      blurRadius: 20)
-                ]),
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(20, 50, 20, 20),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(children: [
-                    InkWell(
-                      onTap: () {
-                        Navigator.pushReplacementNamed(
-                            context, Routes.homeScreen);
-                      },
-                      child: const Row(
-                        children: [
-                          Icon(
-                            Icons.arrow_back,
-                            color:  AppColor.buttonColor_1,
-                            size: 25,
-                          ),
-                          SizedBox(
-                            width: 56,
-                          ),
-                          Text(
-                            MangerString.settings,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20)
+          ), 
+          child: Column(
+            children: [
+              Container(
+                color: AppColor.buttonColor_1,
+                 height: 200, width: double.infinity,
+                child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Row(
+                    children: [
+                      UserAvatar(imageName: MangerAssets.person),
+                      const Padding(
+                        padding:  EdgeInsets.only(top: 25,right: 15),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              MangerString.welcomeHome,
                             style: TextStyle(
-                              fontFamily: 'Cairo',
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold,
-                              color:  AppColor.buttonColor_1,
-                            ),
-                          ),
-                        ],
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontFamily: MangerFonts.cairo
+                            ),),
+
+                            Text(
+                              MangerString.episodeName,
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                  fontFamily: MangerFonts.cairo
+                              ),),
+
+                            Text(
+                              MangerString.numberID,
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                  fontFamily: MangerFonts.cairo
+                              ),),
+                          ],
+                        ),
                       ),
-                    ),
-
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    Row(
-                      children:  [
-                        UserAvatar(imageName: MangerAssets.person),
-                        const SizedBox(
-                          width: 12,
-                        ),
-                        const Text(
-                          '\t اهلا وسهلا\n محمد ابوشملة ',
-                          style: TextStyle(
-                            fontSize: 17,
-                            fontWeight: FontWeight.bold,
-                            color: AppColor.buttonColor_1,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 35,
-                    ),
-                    const DrawerItem(
-                      title: MangerString.daily,
-                      icon: Icons.calendar_view_day,
-                      routName: Routes.dailyLogScreen,
-                    ),
-                    const DrawerItem(
-                      title: MangerString.monthly,
-                      icon: Icons.calendar_month,
-                      routName: Routes.monthlyLogScreen,
-                    ),
-
-                    const DrawerItem(
-                      title: MangerString.support,
-                      icon: Icons.support_agent,
-                      routName: "MyConstants.HOME_SCREEN",
-                    ),
-
-                    const Divider(
-                      height: 35,
-                      color:AppColor.buttonColor_1,
-                      thickness: 1,
-                    ),
-                  ]),
-                  const DrawerItem(
-                    title: MangerString.logout,
-                    icon: Icons.logout,
-                    routName: "MyConstants.LOGIN_SCREEN",
-                  ),
-                ],
+                    ],),
+                ),
               ),
-            ),
+
+              const SizedBox(
+                height: 25  ,
+              ),
+
+              const DrawerItem(
+                title: MangerString.daily,
+                icon: Icons.calendar_view_day,
+                routName: Routes.dailyLogScreen,
+              ),
+
+              const DrawerItem(
+                title: MangerString.monthly,
+                icon: Icons.calendar_view_month,
+                routName: Routes.dailyLogScreen,
+              ),
+
+              const DrawerItem(
+                title: MangerString.settings,
+                icon: Icons.settings,
+                routName: Routes.dailyLogScreen,
+              ),
+              const Divider(
+                height: 35,
+                endIndent: 15, indent: 15,
+                color:AppColor.buttonColor_1,
+                thickness: 1,
+              ),
+
+              const DrawerItem(
+                title: MangerString.logout,
+                icon: Icons.logout,
+                routName:Routes.loginScreen,
+              ),
+
+            ],
           ),
+
         ),
+
+
     )
     );
   }

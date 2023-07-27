@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:itqan/constants/manger_string.dart';
 
-import '../../../../constants/manger_fonts.dart';
-import '../../../../constants/manger_route.dart';
-import '../../../../utils/style/app_color.dart';
-import '../../../../widget/text_app_bar.dart';
+import '../../../../../constants/manger_fonts.dart';
+import '../../../../../constants/manger_route.dart';
+import '../../../../../utils/style/app_color.dart';
 import 'dart:ui' as ui;
+
+import '../../../../../widget/text_app_bar.dart';
 
 
 class DailyLogScreen extends StatefulWidget {
@@ -47,7 +48,7 @@ class _DailyLogScreenState extends State<DailyLogScreen> {
         appBar: AppBar(
           leading: IconButton(
             onPressed: (){
-              Navigator.pushReplacementNamed(context, Routes.bottomNavigationBarScreen);
+              Navigator.pushReplacementNamed(context, Routes.bottomNavigationBarScreenMoa);
             },
             icon: const Icon(Icons.arrow_back,color: Colors.white,),
           ),

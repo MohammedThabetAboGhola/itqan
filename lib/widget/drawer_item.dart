@@ -21,6 +21,7 @@ class DrawerItem extends StatelessWidget {
       },
       child: Padding(
         padding: const EdgeInsets.only(
+          right: 15,left: 15,
           bottom: 25,
         ),
         child: Row(

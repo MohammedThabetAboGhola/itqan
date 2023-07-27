@@ -40,15 +40,16 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
           backgroundColor: AppColor.buttonColor_1,
           centerTitle: true,
           leading: InkWell(
-              child: const Icon(Icons.arrow_back),
+              child: const Icon(Icons.arrow_back,color: Colors.white,),
               onTap: (){
                 Navigator.pushReplacementNamed(context, Routes.loginScreen);
               },
           ),
-          title: Text(
+          title: const Text(
             MangerString.resetPassword,
             style: TextStyle(
-              fontFamily: MangerFonts.cairo
+              fontFamily: MangerFonts.cairo,
+              color: Colors.white,
             ),
           ),
         ),
@@ -57,7 +58,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
             padding: const EdgeInsets.only(left: 25, right: 25, top: 100),
             child: Column(
               children: [
-                Align(
+                const Align(
                   alignment: AlignmentDirectional.bottomStart,
                   child: Text(
                     MangerString.forgetPassword,
@@ -80,7 +81,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                     expands: true,
                     decoration: InputDecoration(
                       labelText: MangerString.identifyNumber,
-                      labelStyle:TextStyle(
+                      labelStyle:const TextStyle(
                         fontSize: 16,
                         color: AppColor.orange,
                         fontFamily: MangerFonts.cairo
@@ -125,7 +126,8 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w500,
-                        fontFamily: MangerFonts.cairo
+                        fontFamily: MangerFonts.cairo,
+                        color: Colors.white,
                       ),
                     ),
                   ),

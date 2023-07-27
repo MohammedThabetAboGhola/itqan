@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-
 import '../../constants/manger_assets.dart';
-import '../../constants/manger_string.dart';
 import '../../constants/manger_route.dart';
-import '../../utils/style/app_color.dart';
 
 
 
@@ -27,11 +24,7 @@ class _LunchScreenState extends State<LunchScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          Image.asset(
-            MangerAssets.logoBackground,
-            height: double.infinity,
-            fit: BoxFit.cover,
-          ),
+
           Center(
             child: Image.asset(
               MangerAssets.logo,

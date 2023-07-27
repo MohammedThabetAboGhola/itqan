@@ -2,18 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:itqan/constants/manger_assets.dart';
 import 'package:itqan/constants/manger_route.dart';
 import 'package:itqan/constants/manger_string.dart';
-import '../../../utils/style/app_color.dart';
-import '../../../widget/text_app_bar.dart';
-import '../../../widget/user_profile.dart';
+import '../../../../utils/style/app_color.dart';
+import '../../../../widget/text_app_bar.dart';
+import '../../../../widget/user_profile.dart';
 
-class UserProfileScreen extends StatefulWidget {
-  const UserProfileScreen({Key? key}) : super(key: key);
+
+class SupervisorProfileScreen extends StatefulWidget {
+  const SupervisorProfileScreen({Key? key}) : super(key: key);
 
   @override
-  State<UserProfileScreen> createState() => _UserProfileScreenState();
+  State<SupervisorProfileScreen> createState() => _SupervisorProfileScreenState();
 }
 
-class _UserProfileScreenState extends State<UserProfileScreen> {
+class _SupervisorProfileScreenState extends State<SupervisorProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Directionality(
@@ -22,7 +23,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
         appBar:  AppBar(
           leading: IconButton(
             onPressed: (){
-              Navigator.pushReplacementNamed(context, Routes.bottomNavigationBarScreen);
+              Navigator.pushReplacementNamed(context, Routes.bottomNavigationBarScreenSupervisor);
             },
             icon: const Icon(Icons.arrow_back),
           ),

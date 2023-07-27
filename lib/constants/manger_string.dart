@@ -22,6 +22,7 @@ class MangerString {
   static const String identifyNumberUser = 'رقم الهوية : 462822842';
   static const String siteUser = 'المنطقة : الوسطى';
   static const String jobUser = 'الوظيفة: مشرف ميداني';
+  static const String jobUser1 = 'الوظيفة: محفظ ';
 
   // AddStudentScreen
 
@@ -50,10 +51,22 @@ class MangerString {
   static const String from = 'من';
   static const String to = 'الى';
 
+  // homeScreen
+
+  static const String welcomeHome = 'اهلا بك : محمد ابوشملة';
+  static const String numberID = '4079534673';
+  static const String supervisor = 'مشرف المنطقة الوسطى';
+  static const String episodeName = 'حلقة عمر بن الخطاب';
 
 
-
-
+  static const String addPurchase = 'إضافة محفظ ';
+  static const String phoneNumber = 'رقم الهاتف';
+  static const String city = 'المحافظة';
+  static const String theWorkOfTheGuardian = 'عمل ولي الامر';
+  static const String saveAmount = 'مقدار الحفظ';
+  static const String academicLevel = 'المستوى الاكاديمي';
+  static const String socialLevel = 'المستوى الاجتماعي';
+  static const String talent = 'الموهبة';
 
 
 

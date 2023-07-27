@@ -1,31 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:itqan/constants/manger_assets.dart';
 import 'package:itqan/constants/manger_fonts.dart';
 import 'package:itqan/constants/manger_string.dart';
-import 'package:itqan/screens/Home_Screens/pages/home_screen.dart';
-import 'package:itqan/screens/Home_Screens/pages/user_profile_screen.dart';
+import 'package:itqan/screens/Home_Screens/mohafeth_screens/pages/home_screen_mohafeth.dart';
+import 'package:itqan/screens/Home_Screens/mohafeth_screens/pages/mohafeth_profile_screen.dart';
 import 'package:itqan/utils/style/app_color.dart';
 
-import '../../../constants/manger_route.dart';
-import '../../../widget/drawer_item.dart';
-import '../../../widget/user_avatar.dart';
+import '../../../../constants/manger_route.dart';
 
-class BottomNavigationBarScreen extends StatefulWidget {
-  const BottomNavigationBarScreen({Key? key}) : super(key: key);
+
+
+class BottomNavigationBarMoaScreen extends StatefulWidget {
+  const BottomNavigationBarMoaScreen({Key? key}) : super(key: key);
 
   @override
-  State<BottomNavigationBarScreen> createState() => _BottomNavigationBarScreenState();
+  State<BottomNavigationBarMoaScreen> createState() => _BottomNavigationBarMoaScreenState();
 }
 
-class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
+class _BottomNavigationBarMoaScreenState extends State<BottomNavigationBarMoaScreen> {
 
   int currentTab = 0;
   final List<Widget> screens =[
-    HomeScreen(), UserProfileScreen()
+    HomeScreenMoa(), MoaProfileScreen()
   ];
   final PageStorageBucket bucket = PageStorageBucket();
 
-  Widget currentScreen = HomeScreen();
+  Widget currentScreen = HomeScreenMoa();
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +61,7 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
                       minWidth: 40,
                       onPressed: (){
                         setState(() {
-                          currentScreen = HomeScreen();
+                          currentScreen = HomeScreenMoa();
                           currentTab=0;
                         });
                       },
@@ -91,7 +90,7 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
                       minWidth: 40,
                       onPressed: (){
                         setState(() {
-                          currentScreen = UserProfileScreen();
+                          currentScreen = MoaProfileScreen();
                           currentTab=1;
                         });
                       },

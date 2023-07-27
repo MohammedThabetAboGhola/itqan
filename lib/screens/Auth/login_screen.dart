@@ -137,8 +137,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                 MangerString.textLogin,
                                 style: TextStyle(
                                     fontSize: 20,
-                                    fontWeight: FontWeight.w500,
-                                    fontFamily: MangerFonts.cairo
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: MangerFonts.cairo,
+                                    color: Colors.white,
                                 ),
                               ),
                             ),
@@ -179,7 +180,15 @@ class _LoginScreenState extends State<LoginScreen> {
 
    Future<void> _login() async {
 
-     Navigator.pushReplacementNamed(context, Routes.bottomNavigationBarScreen);
+     if(_identifyTextController.text == "m"){
+       Navigator.pushReplacementNamed(context, Routes.bottomNavigationBarScreenMoa);
+     }
+
+     if(_identifyTextController.text == "s"){
+       Navigator.pushReplacementNamed(context, Routes.bottomNavigationBarScreenSupervisor);
+     }
+
+
 
    }
 
