@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:itqan/constants/manger_string.dart';
+import 'package:itqan/core/constants/manger_string.dart';
 
-import '../../../../../constants/manger_fonts.dart';
-import '../../../../../constants/manger_route.dart';
+import '../../../../../core/constants/manger_fonts.dart';
+import '../../../../../core/constants/manger_route.dart';
 import '../../../../../utils/style/app_color.dart';
 import 'dart:ui' as ui;
 

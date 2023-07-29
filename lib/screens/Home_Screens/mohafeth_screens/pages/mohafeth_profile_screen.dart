@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:itqan/constants/manger_assets.dart';
-import 'package:itqan/constants/manger_route.dart';
-import 'package:itqan/constants/manger_string.dart';
+import 'package:itqan/core/constants/manger_assets.dart';
+import 'package:itqan/core/constants/manger_route.dart';
+import 'package:itqan/core/constants/manger_string.dart';
 import '../../../../utils/style/app_color.dart';
 import '../../../../widget/text_app_bar.dart';
 import '../../../../widget/user_profile.dart';

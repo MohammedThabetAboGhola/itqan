@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 
-import '../constants/manger_fonts.dart';
+import '../core/constants/manger_fonts.dart';
 class TextAppBar extends StatelessWidget {
   final String title;
   const TextAppBar({

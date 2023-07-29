@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:itqan/constants/manger_assets.dart';
-import 'package:itqan/constants/manger_fonts.dart';
-import 'package:itqan/constants/manger_route.dart';
-import 'package:itqan/constants/manger_string.dart';
+import 'package:itqan/core/constants/manger_assets.dart';
+import 'package:itqan/core/constants/manger_fonts.dart';
+import 'package:itqan/core/constants/manger_route.dart';
+import 'package:itqan/core/constants/manger_string.dart';
 import 'package:itqan/utils/style/app_color.dart';
 
 import '../../../../widget/drawer_item.dart';

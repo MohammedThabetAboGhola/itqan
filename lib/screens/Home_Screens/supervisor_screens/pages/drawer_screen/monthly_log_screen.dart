@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../constants/manger_string.dart';
+import '../../../../../core/constants/manger_string.dart';
 
 
 

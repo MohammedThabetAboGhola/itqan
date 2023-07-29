@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../constants/manger_fonts.dart';
+import '../core/constants/manger_fonts.dart';
 import '../utils/style/app_color.dart';
 
 class UserProfile extends StatelessWidget {

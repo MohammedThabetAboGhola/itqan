@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:itqan/constants/manger_fonts.dart';
-import 'package:itqan/constants/manger_string.dart';
+import 'package:itqan/core/constants/manger_fonts.dart';
+import 'package:itqan/core/constants/manger_string.dart';
 import 'package:itqan/utils/helpers/helper.dart';
 import 'package:itqan/utils/style/app_color.dart';
 
-import '../../constants/manger_route.dart';
+import '../../core/constants/manger_route.dart';
 
 
 class ResetPasswordScreen extends StatefulWidget {
@@ -75,7 +75,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                   height: 60,
                   child: TextField(
                     controller: _identifyTextController,
-                    keyboardType: TextInputType.emailAddress,
+                    keyboardType: TextInputType.phone,
                     minLines: null,
                     maxLines: null,
                     expands: true,

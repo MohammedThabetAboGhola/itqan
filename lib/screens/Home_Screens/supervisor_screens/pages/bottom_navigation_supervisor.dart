@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:itqan/constants/manger_fonts.dart';
-import 'package:itqan/constants/manger_string.dart';
+import 'package:itqan/core/constants/manger_fonts.dart';
+import 'package:itqan/core/constants/manger_string.dart';
 import 'package:itqan/screens/Home_Screens/supervisor_screens/pages/home_screen_supervisor.dart';
 import 'package:itqan/screens/Home_Screens/supervisor_screens/pages/supervisor_profile_screen.dart';
 import 'package:itqan/utils/style/app_color.dart';
 
-import '../../../../constants/manger_route.dart';
+import '../../../../core/constants/manger_route.dart';
 
 
 

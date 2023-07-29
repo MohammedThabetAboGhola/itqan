@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:itqan/constants/manger_assets.dart';
-import '../../../../constants/manger_fonts.dart';
-import '../../../../constants/manger_route.dart';
-import '../../../../constants/manger_string.dart';
+import 'package:intl/intl.dart';
+import 'package:itqan/core/constants/manger_assets.dart';
+import '../../../../core/constants/manger_fonts.dart';
+import '../../../../core/constants/manger_route.dart';
+import '../../../../core/constants/manger_string.dart';
 import '../../../../utils/style/app_color.dart';
 import '../../../../widget/text_app_bar.dart';
+import 'dart:ui' as ui;
 
 
 class AddStudentScreen extends StatefulWidget {
@@ -19,6 +21,13 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
   late TextEditingController _nameStudentTextController;
   late TextEditingController _startSaveTextController;
   late TextEditingController _dateStartTextController;
+  late TextEditingController _date;
+
+
+  final _city = ["الوسطى", "الشمال", "الجنوب",];
+  final _gender = ["ذكر", "انثى"];
+  String? _selectCity;
+  String? _selectGender;
 
   @override
   void initState() {
@@ -28,6 +37,7 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
     _nameStudentTextController = TextEditingController();
     _startSaveTextController = TextEditingController();
     _dateStartTextController = TextEditingController();
+    _date = TextEditingController();
   }
 
   @override
@@ -36,13 +46,14 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
     _nameStudentTextController.dispose();
     _startSaveTextController.dispose();
     _dateStartTextController.dispose();
+    _date.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Directionality(
-      textDirection: TextDirection.rtl,
+      textDirection: ui.TextDirection.rtl,
       child: Scaffold(
         appBar: AppBar(
           leading: IconButton(
@@ -96,6 +107,7 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
                   ),
                 ),
               ),
+
                   const SizedBox(height: 20,),
 
                   Row(
@@ -106,6 +118,7 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
                         height: 45,
                         child:TextField(
                           // controller: _nameStudentTextController,
+                          keyboardType: TextInputType.phone,
                           obscureText: false,
                           decoration: InputDecoration(
                             labelText: MangerString.identifyNumber,
@@ -139,6 +152,7 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
                         height: 45,
                         child: TextField(
                           // controller: _nameStudentTextController,
+                          keyboardType: TextInputType.phone,
                           obscureText: false,
                           decoration: InputDecoration(
                             labelText: MangerString.phoneNumber,
@@ -177,20 +191,21 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
                         width: 165,
                         height: 45,
                         child:TextField(
-                          // controller: _nameStudentTextController,
+                          controller: _date,
                           obscureText: false,
+                          onTap: _showDatePicker,
                           decoration: InputDecoration(
-                            labelText: MangerString.dateStart,
+                            labelText: MangerString.todayDate,
+                            suffixIcon: const Icon(
+                              Icons.calendar_month,
+                              color: AppColor.buttonColor_1,
+                            ),
                             labelStyle: const TextStyle(
                               fontSize: 16,
                               color: AppColor.orange,
                               fontFamily: MangerFonts.cairo,
                             ),
 
-                            suffixIcon: InkWell(
-                              child: Icon(Icons.date_range,color: AppColor.orange,),
-                              onTap: (){},
-                            ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20),
                               borderSide: const BorderSide(
@@ -213,11 +228,27 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
                       SizedBox(
                         width: 165,
                         height: 45,
-                        child: TextField(
-                          // controller: _nameStudentTextController,
-                          obscureText: false,
+                        child:DropdownButtonFormField(
+                          value: _selectCity,
+
+
+                          items: _city
+                              .map((e) => DropdownMenuItem(
+                            child: Text(e),
+                            value: e,
+                          ))
+                              .toList(),
+                          onChanged: (value) {
+                            setState(() {
+                              _selectCity = value as String;
+                            });
+                          },
+                          icon: const Icon(
+                            Icons.arrow_drop_down_circle,
+                            color: AppColor.buttonColor_1,
+                          ),
                           decoration: InputDecoration(
-                            labelText: MangerString.city,
+                            labelText: MangerString.studentName,
                             labelStyle: const TextStyle(
                               fontSize: 16,
                               color: AppColor.orange,
@@ -240,6 +271,7 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
                             ),
                           ),
                         ),
+
                       ),
                     ],
                   ),
@@ -317,7 +349,6 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
                   ),
 
                   const SizedBox(height: 20,),
-
 
                   TextField(
                     // controller: _nameStudentTextController,
@@ -494,5 +525,21 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
         ),
       ),
     );
+  }
+
+  void _showDatePicker () async {
+    DateTime? dateTime = await showDatePicker(
+        context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime(2000),
+        lastDate: DateTime(2101));
+
+    if(dateTime != null){
+      setState(() {
+        String formattedDate = DateFormat.yMMMEd().format(dateTime);
+        _date.text = formattedDate;
+      });
+
+    }
   }
 }

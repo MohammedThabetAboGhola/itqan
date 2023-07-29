@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:itqan/constants/manger_fonts.dart';
-import 'package:itqan/constants/manger_assets.dart';
-import 'package:itqan/constants/manger_string.dart';
+import 'package:itqan/core/constants/manger_fonts.dart';
+import 'package:itqan/core/constants/manger_assets.dart';
+import 'package:itqan/core/constants/manger_string.dart';
 import 'package:itqan/utils/helpers/helper.dart';
 import 'package:itqan/utils/style/app_color.dart';
 
-import '../../constants/manger_route.dart';
+import '../../core/constants/manger_route.dart';
 import '../../widget/custom_text_filed.dart';
 
 import 'package:mysql1/mysql1.dart';

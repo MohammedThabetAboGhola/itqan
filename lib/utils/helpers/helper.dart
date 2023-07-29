@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../constants/manger_fonts.dart';
+import '../../core/constants/manger_fonts.dart';
 
 
 extension HelperContextExtenssion on BuildContext {
@@ -21,3 +21,4 @@ extension HelperContextExtenssion on BuildContext {
   }
 
 }
+
