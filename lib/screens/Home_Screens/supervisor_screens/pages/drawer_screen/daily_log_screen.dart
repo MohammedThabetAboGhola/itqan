@@ -10,14 +10,14 @@ import 'dart:ui' as ui;
 import '../../../../../widget/text_app_bar.dart';
 
 
-class DailyLogScreen extends StatefulWidget {
-  const DailyLogScreen({Key? key}) : super(key: key);
+class DailyLogScreenSupervisor extends StatefulWidget {
+  const DailyLogScreenSupervisor({Key? key}) : super(key: key);
 
   @override
-  State<DailyLogScreen> createState() => _DailyLogScreenState();
+  State<DailyLogScreenSupervisor> createState() => _DailyLogScreenSupervisorState();
 }
 
-class _DailyLogScreenState extends State<DailyLogScreen> {
+class _DailyLogScreenSupervisorState extends State<DailyLogScreenSupervisor> {
 
   late TextEditingController _nameStudentTextController;
   late TextEditingController _date;
@@ -48,7 +48,7 @@ class _DailyLogScreenState extends State<DailyLogScreen> {
         appBar: AppBar(
           leading: IconButton(
             onPressed: (){
-              Navigator.pushReplacementNamed(context, Routes.bottomNavigationBarScreenSupervisor);
+              Navigator.pushNamed(context, Routes.bottomNavigationBarScreenSupervisor);
             },
             icon: const Icon(Icons.arrow_back,color: Colors.white,),
           ),

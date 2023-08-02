@@ -24,7 +24,7 @@ class _MoaProfileScreenState extends State<MoaProfileScreen> {
           leading: IconButton(
             color: Colors.white,
             onPressed: (){
-              Navigator.pushReplacementNamed(context, Routes.bottomNavigationBarScreenMoa);
+              Navigator.pushNamed(context, Routes.bottomNavigationBarScreenMoa);
             },
             icon: const Icon(Icons.arrow_back),
           ),

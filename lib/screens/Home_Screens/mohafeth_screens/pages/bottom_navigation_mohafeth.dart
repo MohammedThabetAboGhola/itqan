@@ -38,7 +38,7 @@ class _BottomNavigationBarMoaScreenState extends State<BottomNavigationBarMoaScr
         floatingActionButton: FloatingActionButton(
           backgroundColor: AppColor.buttonColor_1  ,
           onPressed: (){
-            Navigator.pushReplacementNamed(context, Routes.addStudentScreen);
+            Navigator.pushNamed(context, Routes.addStudentScreen);
           },
           child: const Icon(Icons.person_add,color: Colors.white ,),
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:itqan/core/constants/manger_assets.dart';
 import 'package:itqan/core/constants/manger_lists.dart';
@@ -10,17 +11,15 @@ import '../../../../core/constants/manger_string.dart';
 import '../../../../utils/style/app_color.dart';
 import '../../../../widget/text_app_bar.dart';
 import 'dart:ui' as ui;
-import 'package:animated_custom_dropdown/custom_dropdown.dart';
 
-class AddStudentScreen extends StatefulWidget {
-  const AddStudentScreen({Key? key}) : super(key: key);
+class EditeStudentScreen extends StatefulWidget {
+  const EditeStudentScreen({Key? key}) : super(key: key);
 
   @override
-  State<AddStudentScreen> createState() => _AddStudentScreenState();
+  State<EditeStudentScreen> createState() => _EditeStudentScreenState();
 }
 
-class _AddStudentScreenState extends State<AddStudentScreen> {
-
+class _EditeStudentScreenState extends State<EditeStudentScreen> {
 
   late TextEditingController _nameStudentTextController;
   late TextEditingController _startSaveTextController;
@@ -52,7 +51,6 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
     _date.dispose();
     super.dispose();
   }
-
   @override
   Widget build(BuildContext context) {
     return Directionality(
@@ -69,7 +67,7 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
               color: Colors.white,
             ),
           ),
-          title: const TextAppBar(title: MangerString.titleAddScreen),
+          title: const TextAppBar(title: MangerString.editeStudentTitle),
           centerTitle: true,
           backgroundColor: AppColor.buttonColor_1,
         ),
@@ -88,18 +86,18 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
                   const SizedBox(height: 20,),
 
                   const SizedBox(
-                    height: 45,
-                    child: MyCustomTextFiled(
-                      // controller: _nameStudentTextController,
-                      labelText: MangerString.studentName,
-                       textInputType: TextInputType.text,
-                    )
+                      height: 45,
+                      child: MyCustomTextFiled(
+                        // controller: _nameStudentTextController,
+                        labelText: MangerString.studentName,
+                        textInputType: TextInputType.text,
+                      )
                   ),
                   const SizedBox(height: 10, ),
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                       SizedBox(
+                      SizedBox(
                         width: 175,
                         height: 45,
                         child: MyCustomTextFiled(
@@ -108,7 +106,7 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
                           labelText: MangerString.identifyNumber,
                         ),
                       ),
-                       Spacer(),
+                      Spacer(),
                       SizedBox(
                         width: 170,
                         height: 45,
@@ -330,7 +328,6 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
       ),
     );
   }
-
   void _showDatePicker() async {
     DateTime? dateTime = await showDatePicker(
         context: context,
@@ -346,5 +343,4 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
       });
     }
   }
-
 }

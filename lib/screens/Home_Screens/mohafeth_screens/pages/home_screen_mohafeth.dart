@@ -86,14 +86,80 @@ class _HomeScreenMoaState extends State<HomeScreenMoa> {
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: const EdgeInsets.symmetric(vertical: 8),
-                          child: InkWell(
-                            onTap: () {
-                              Navigator.pushReplacementNamed(
-                                  context, Routes.dailyLogScreen);
-                            },
-                            child: CardItem(
-                              name: 'الطالب/ محمد جمال ابو عيشة',
-                              icon: const Icon(Icons.person_outline),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(20),
+                              border: Border.all(color: Color(0XFF707070)),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 5),
+
+                              child: ListTile(
+                                onTap: (){
+                                  Navigator.pushNamed(
+                                      context, Routes.addDailyMemorizationStudentScreen);
+                                },
+                                leading: const Icon(Icons.person),
+                                title: const Text(
+                                   MangerString.nameStudent,
+                                  style:TextStyle(
+                                    fontFamily: MangerFonts.cairo,
+                                    fontSize: 18,
+                                    color: Color(0XFFC5593A),
+                                  ),
+                                ),
+                                trailing: PopupMenuButton<int>(
+                                  onSelected: (int selectedItem){
+                                    setState(() {
+                                      onSelected(selectedItem);
+                                    });
+                                  },
+                                  icon: const Icon(Icons.more_vert),
+                                  itemBuilder: (context){
+                                    return [
+                                      const PopupMenuItem(
+                                        value: 0,
+                                        child:  Text(
+                                          MangerString.edite,
+                                          style: TextStyle(
+                                            fontFamily: MangerFonts.cairo,
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                      ),
+                                      const PopupMenuDivider(),
+                                      const PopupMenuItem(
+                                        value : 1,
+                                        child:  Text(
+                                          MangerString.yearLogTitle,
+                                          style:TextStyle(
+                                            fontSize: 16,
+                                            fontFamily: MangerFonts.cairo,
+                                          ),
+                                        ),
+                                      ),
+                                      const PopupMenuDivider(),
+                                      const PopupMenuItem(
+                                        value : 2,
+                                        child:  Text(
+                                          MangerString.remove,
+                                          style:TextStyle(
+                                            fontSize: 16,
+                                            fontFamily: MangerFonts.cairo,
+                                          ),
+                                        ),
+                                      ),
+                                    ];
+                                  },
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                ),
+
+                              ),
+
+
                             ),
                           ),
                         );
@@ -149,103 +215,86 @@ class _HomeScreenMoaState extends State<HomeScreenMoa> {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 25,
-                ),
-                const DrawerItem(
-                  title: MangerString.daily,
-                  icon: Icons.calendar_view_day,
-                  routName: Routes.dailyLogScreen,
-                ),
-                const DrawerItem(
-                  title: MangerString.monthly,
-                  icon: Icons.calendar_view_month,
-                  routName: Routes.dailyLogScreen,
-                ),
-                const DrawerItem(
-                  title: MangerString.settings,
-                  icon: Icons.settings,
-                  routName: Routes.dailyLogScreen,
-                ),
-                const Divider(
-                  height: 35,
-                  endIndent: 15,
-                  indent: 15,
-                  color: AppColor.buttonColor_1,
-                  thickness: 1,
-                ),
+                const SizedBox(height: 25,),
                 const DrawerItem(
                   title: MangerString.logout,
                   icon: Icons.logout,
                   routName: Routes.loginScreen,
                 ),
+
               ],
             ),
           ),
         ));
   }
-}
+  void onSelected (select){
+    setState(() {
+      switch(select){
+        case 0 :
+          Navigator.pushNamed(context, Routes.editeStudentScreen);
+          break;
 
-class CardItem extends StatelessWidget {
-  Icon icon;
-  String name;
 
-  CardItem({super.key, required this.icon, required this.name});
+        case 1 :
+          Navigator.pushNamed(context, Routes.yearLogScreen);
+          break;
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: const Color(0XFF707070)),
+        case 2 :
+          showAlertDialog(context);
+          break;
+      }
+    });
+  }
+
+
+  showAlertDialog(BuildContext context) {
+
+    // set up the button
+    Widget okButton = TextButton(
+      child: const Text(MangerString.yes,style: TextStyle(
+          fontFamily: MangerFonts.cairo,
+          color: AppColor.buttonColor_1,
+          fontSize: 18
+      ),),
+      onPressed: () {
+
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: const Directionality(
+        textDirection: TextDirection.rtl,
+        child: Text(
+          MangerString.removeStudent,style: TextStyle(
+            fontFamily: MangerFonts.cairo,
+            color: AppColor.buttonColor_1,
+            fontSize: 18
+        ),),
       ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 5),
-        child: ListTile(
-          leading: icon,
-          title: Text(
-            name,
-            style: const TextStyle(
+      content: const Directionality(
+        textDirection: TextDirection.rtl,
+        child:  Text(
+          MangerString.massRemoveStudent,
+          style: TextStyle(
               fontFamily: MangerFonts.cairo,
-              fontSize: 18,
-              color: Color(0XFFC5593A),
-            ),
-          ),
-          trailing: PopupMenuButton<int>(
-            onSelected: (int selectedItem) {},
-            icon: const Icon(Icons.more_vert),
-            itemBuilder: (context) {
-              return [
-                PopupMenuItem(
-                  child: const Text(
-                    MangerString.remove,
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontFamily: MangerFonts.cairo,
-                    ),
-                  ),
-                  onTap: () {},
-                ),
-                const PopupMenuDivider(),
-                PopupMenuItem(
-                  child: const Text(
-                    MangerString.edite,
-                    style: TextStyle(
-                      fontFamily: MangerFonts.cairo,
-                      fontSize: 16,
-                    ),
-                  ),
-                  onTap: () {},
-                ),
-              ];
-            },
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
+              color: Colors.black,
+              fontSize: 16
           ),
         ),
       ),
+      actions: [
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
     );
   }
 }
+

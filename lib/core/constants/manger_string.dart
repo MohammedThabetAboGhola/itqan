@@ -61,16 +61,60 @@ class MangerString {
 
   static const String addPurchase = 'إضافة محفظ ';
   static const String phoneNumber = 'رقم الهاتف';
-  static const String city = 'المحافظة';
+  static const String city = '  المحافظة  ';
   static const String theWorkOfTheGuardian = 'عمل ولي الامر';
   static const String saveAmount = 'مقدار الحفظ';
-  static const String academicLevel = 'المستوى الاكاديمي';
-  static const String socialLevel = 'المستوى الاجتماعي';
+  static const String academicLevel = '  المستوى الاكاديمي';
+  static const String socialLevel = '  المستوى الاجتماعي';
   static const String talent = 'الموهبة';
 
 
   static const String remove = 'حذف';
   static const String edite = 'تعديل';
+  static const String gender = '  الجنس';
+  static const String mo = '  المحفظ';
+
+
+
+
+
+  // AddSupervisorScreen
+
+  static const String titleAddSupervisor = 'اضافة محفظ';
+  static const String nameMo = 'اسم المحفظ';
+  static const String nameEpisode = 'اسم الحلقة';
+  static const String numberOfStudent = 'عدد الطلاب';
+  static const String center = 'المركز';
+  static const String supervisor1 = '  المشرف';
+  static const String maritalStatus = '  الحالة الاجتماعية';
+  static const String work = 'العمل';
+  static const String tajweed = '  احكام التجويد';
+  static const String yearsOfExperience = '  سنوات الخبرة';
+  static const String saveAmount1 = '  مقدار الحفظ';
+
+  // DetailsEpisodeScreen
+
+  static const String detailsEpisode = 'تفاصيل الحلقة';
+  static const String monthlyLogTitle = 'السجل الشهري';
+  static const String yearLogTitle = 'السجل السنوي';
+  static const String day = 'اليوم';
+  static const String date  = 'التاريخ';
+  static const String detailsEpisodeName  = "حلقة الصحابي الجليل : عمر بن الخطاب ";
+  static const String detailsEpisodeNumber  = "عدد الطلاب : 15";
+  static const String detailsEpisodeRate  = "التقييم : 7.5";
+  static const String rate  = "التقييم";
+  static const String studentNameDetailsEpisode  = "محمد محمود احمد ";
+  static const String editeEpisodeTitle  = "تعديل بيانات الحلقة";
+  static const String editeStudentTitle  = "تعديل بيانات الطالب";
+  static const String removeStudent  = "حذف طالب";
+  static const String removeEpisode  = "حذف الحلقة";
+  static const String massRemoveStudent  = "هل انت متاكد من حذف الطالب ؟";
+  static const String massRemoveEpisode  = "هل انت متاكد من حذف الحلقة ؟";
+  static const String yes  = "نعم";
+  static const String nameStudent  = "الطالب /محمد جمال ابوعيشة";
+  static const String chooseSurah  = "  اختر السورة";
+
+
 
 
 

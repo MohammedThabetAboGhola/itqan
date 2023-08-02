@@ -17,7 +17,7 @@ class DrawerItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-          Navigator.pushReplacementNamed(context, routName!);
+          Navigator.pushNamed(context, routName!);
       },
       child: Padding(
         padding: const EdgeInsets.only(

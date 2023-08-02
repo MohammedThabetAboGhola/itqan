@@ -38,7 +38,7 @@ class _BottomNavigationBarSupervisorScreenState extends State<BottomNavigationBa
         floatingActionButton: FloatingActionButton(
           backgroundColor: AppColor.buttonColor_1  ,
           onPressed: (){
-            Navigator.pushReplacementNamed(context, Routes.addStudentScreen);
+            Navigator.pushNamed(context, Routes.addEpisodeAndMoScreen);
           },
           child: const Icon(Icons.person_add,color: Colors.white ,),
         ),

@@ -12,15 +12,15 @@ import '../../../../widget/text_app_bar.dart';
 import 'dart:ui' as ui;
 import 'package:animated_custom_dropdown/custom_dropdown.dart';
 
-class AddStudentScreen extends StatefulWidget {
-  const AddStudentScreen({Key? key}) : super(key: key);
+
+class AddEpisodeAndMoScreen extends StatefulWidget {
+  const AddEpisodeAndMoScreen({Key? key}) : super(key: key);
 
   @override
-  State<AddStudentScreen> createState() => _AddStudentScreenState();
+  State<AddEpisodeAndMoScreen> createState() => _AddEpisodeAndMoScreenState();
 }
 
-class _AddStudentScreenState extends State<AddStudentScreen> {
-
+class _AddEpisodeAndMoScreenState extends State<AddEpisodeAndMoScreen> {
 
   late TextEditingController _nameStudentTextController;
   late TextEditingController _startSaveTextController;
@@ -30,6 +30,11 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
   final genderController = TextEditingController();
   final socialLevelController = TextEditingController();
   final academicLeveController = TextEditingController();
+  final supervisorController = TextEditingController();
+  final maritalStatusController = TextEditingController();
+  final saveAmountController = TextEditingController();
+  final tajweedController = TextEditingController();
+  final yearsOfExperienceController = TextEditingController();
 
 
   @override
@@ -62,18 +67,17 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
           leading: IconButton(
             onPressed: () {
               Navigator.pushNamed(
-                  context, Routes.bottomNavigationBarScreenMoa);
+                  context, Routes.bottomNavigationBarScreenSupervisor);
             },
             icon: const Icon(
               Icons.arrow_back,
               color: Colors.white,
             ),
           ),
-          title: const TextAppBar(title: MangerString.titleAddScreen),
+          title: const TextAppBar(title: MangerString.titleAddSupervisor),
           centerTitle: true,
           backgroundColor: AppColor.buttonColor_1,
         ),
-
         body: SingleChildScrollView(
           child: Center(
             child: Padding(
@@ -83,32 +87,40 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
                   CircleAvatar(
                     backgroundColor: Colors.white10,
                     radius: 70,
-                    backgroundImage: AssetImage(MangerAssets.student),
+                    backgroundImage: AssetImage(MangerAssets.episode),
                   ),
+
                   const SizedBox(height: 20,),
 
                   const SizedBox(
                     height: 45,
                     child: MyCustomTextFiled(
-                      // controller: _nameStudentTextController,
-                      labelText: MangerString.studentName,
-                       textInputType: TextInputType.text,
-                    )
+                      labelText: MangerString.nameMo,
+                        textInputType: TextInputType.text
+                    ),
                   ),
-                  const SizedBox(height: 10, ),
+                  const SizedBox(height: 10,),
+
+                  const SizedBox(
+                    height: 45,
+                    child: MyCustomTextFiled(
+                        labelText: MangerString.nameEpisode,
+                        textInputType: TextInputType.text ),
+                  ),
+                  const SizedBox(height: 10,),
+
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                       SizedBox(
+                      SizedBox(
                         width: 175,
                         height: 45,
                         child: MyCustomTextFiled(
-                          // controller: _nameStudentTextController,
-                          textInputType:TextInputType.phone ,
-                          labelText: MangerString.identifyNumber,
-                        ),
+                          textInputType: TextInputType.phone,
+                            labelText: MangerString.identifyNumber,
+                          ),
                       ),
-                       Spacer(),
+                      Spacer(),
                       SizedBox(
                         width: 170,
                         height: 45,
@@ -116,7 +128,6 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
                           // controller: _nameStudentTextController,
                           textInputType: TextInputType.phone,
                           labelText: MangerString.phoneNumber,
-
                         ),
                       ),
                     ],
@@ -168,43 +179,32 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
                         width: 175,
                         height: 45,
                         child: MyCustomDropdown(
-                          hintText: MangerString.city,
-                          controller: cityController,
-                          listItem: MangerLists.city,
+                            hintText: MangerString.city,
+                            listItem: MangerLists.city,
+                            controller: cityController,
                         ),
                       ),
                       const Spacer(),
-                      SizedBox(
+                      const SizedBox(
                         width: 170,
                         height: 45,
-                        child: TextField(
-                          // controller: _nameStudentTextController,
-                          obscureText: false,
-                          decoration: InputDecoration(
-                            labelText: MangerString.theWorkOfTheGuardian,
-                            labelStyle: const TextStyle(
-                              fontSize: 16,
-                              color: AppColor.orange,
-                              fontFamily: MangerFonts.cairo,
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20),
-                              borderSide: const BorderSide(
-                                width: 1,
-                                color: Colors.grey,
-                              ),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20),
-                              borderSide: const BorderSide(
-                                width: 1,
-                                color: AppColor.green,
-                              ),
-                            ),
-                          ),
+                        child: MyCustomTextFiled(
+                            labelText: MangerString.center,
+                            textInputType: TextInputType.text
                         ),
                       ),
                     ],
+                  ),
+
+                  const SizedBox(height: 10,),
+
+                  SizedBox(
+                    height: 50,
+                    child: MyCustomDropdown(
+                      hintText: MangerString.supervisor1,
+                      controller: supervisorController,
+                      listItem: MangerLists.socialLevelList,
+                    ),
                   ),
 
                   const SizedBox(height: 10,),
@@ -217,6 +217,7 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
                       listItem: MangerLists.socialLevelList,
                     ),
                   ),
+
                   const SizedBox(height: 10,),
 
                   SizedBox(
@@ -224,9 +225,55 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
                     child: MyCustomDropdown(
                       hintText: MangerString.academicLevel,
                       controller: academicLeveController,
-                      listItem: MangerLists.academicLevelListStudent,
+                      listItem: MangerLists.academicLevelList,
                     ),
                   ),
+
+                  const SizedBox(height: 10,),
+
+                  SizedBox(
+                    height: 50,
+                    child: MyCustomDropdown(
+                      hintText: MangerString.maritalStatus,
+                      controller: maritalStatusController,
+                      listItem: MangerLists.maritalStatusList,
+                    ),
+                  ),
+
+                  const SizedBox(height: 10,),
+
+
+                  SizedBox(
+                    height: 50,
+                    child: MyCustomDropdown(
+                      hintText: MangerString.yearsOfExperience,
+                      controller: yearsOfExperienceController,
+                      listItem: MangerLists.socialLevelList,
+                    ),
+                  ),
+
+                  const SizedBox(height: 10,),
+
+                  SizedBox(
+                    height: 50,
+                    child: MyCustomDropdown(
+                      hintText: MangerString.tajweed,
+                      controller: tajweedController,
+                      listItem: MangerLists.tajweedList,
+                    ),
+                  ),
+
+                  const SizedBox(height: 10,),
+
+                  SizedBox(
+                    height: 50,
+                    child: MyCustomDropdown(
+                      hintText: MangerString.saveAmount1,
+                      controller: saveAmountController,
+                      listItem: MangerLists.partsList,
+                    ),
+                  ),
+
                   const SizedBox(height: 10,),
 
                   Row(
@@ -235,10 +282,10 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
                       const SizedBox(
                         width: 175,
                         height: 45,
-                        child: MyCustomTextFiled(
+                        child:  MyCustomTextFiled(
                           // controller: _nameStudentTextController,
-                          labelText: MangerString.saveAmount,
-                          textInputType: TextInputType.text,
+                            labelText: MangerString.work,
+                            textInputType: TextInputType.text,
                         ),
                       ),
                       const Spacer(),
@@ -247,26 +294,18 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
                         height: 45,
                         child:MyCustomDropdown(
                           hintText: MangerString.gender,
-                          controller: genderController ,
+                          controller: genderController,
                           listItem: MangerLists.gender,
                         ),
                       ),
                     ],
                   ),
 
-
                   const SizedBox(height: 10,),
 
                   const SizedBox(
-                    height: 50,
-                    child: MyCustomTextFiled(
-                      // controller: _nameStudentTextController,
-                      labelText: MangerString.talent,
-                      textInputType: TextInputType.text,
-                    ),
+                    height: 20,
                   ),
-
-                  const SizedBox(height: 20,),
 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -295,7 +334,9 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
                           ),
                         ),
                       ),
-                      const SizedBox(width: 50,),
+                      const SizedBox(
+                        width: 50,
+                      ),
                       SizedBox(
                         width: 110,
                         height: 45,
@@ -334,7 +375,7 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
   void _showDatePicker() async {
     DateTime? dateTime = await showDatePicker(
         context: context,
-        locale: const Locale("ar"),
+        locale: Locale("ar"),
         initialDate: DateTime.now(),
         firstDate: DateTime(2000),
         lastDate: DateTime(2101));
@@ -348,3 +389,7 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
   }
 
 }
+
+
+
+

@@ -23,7 +23,7 @@ class _SupervisorProfileScreenState extends State<SupervisorProfileScreen> {
         appBar:  AppBar(
           leading: IconButton(
             onPressed: (){
-              Navigator.pushReplacementNamed(context, Routes.bottomNavigationBarScreenSupervisor);
+              Navigator.pushNamed(context, Routes.bottomNavigationBarScreenSupervisor);
             },
             icon: const Icon(Icons.arrow_back),
           ),

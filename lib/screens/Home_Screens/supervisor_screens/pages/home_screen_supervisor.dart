@@ -9,6 +9,8 @@ import '../../../../widget/drawer_item.dart';
 import '../../../../widget/text_app_bar.dart';
 import '../../../../widget/user_avatar.dart';
 
+
+
 class HomeSupervisorScreen extends StatefulWidget {
   const HomeSupervisorScreen({Key? key}) : super(key: key);
 
@@ -23,11 +25,13 @@ class _HomeSupervisorScreenState extends State<HomeSupervisorScreen> {
       textDirection: TextDirection.rtl,
       child: Scaffold(
         appBar: AppBar(
+          iconTheme:const IconThemeData(color: Colors.white),
           title: const TextAppBar(title: MangerString.homeScreenText),
           centerTitle: true,
           backgroundColor: AppColor.buttonColor_1,
 
         ),
+
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 25),
           child: Column(
@@ -82,6 +86,10 @@ class _HomeSupervisorScreenState extends State<HomeSupervisorScreen> {
                             padding: const EdgeInsets.symmetric(vertical: 5),
 
                             child: ListTile(
+                              onTap: (){
+                                Navigator.pushNamed(
+                                  context, Routes.detailsEpisodeScreen);
+                                },
                               leading: const Icon(Icons.circle_outlined),
                               title: const Text(
                                 'حلقة/ عمر بن الخطاب ',
@@ -93,30 +101,33 @@ class _HomeSupervisorScreenState extends State<HomeSupervisorScreen> {
                               ),
                               trailing: PopupMenuButton<int>(
                                 onSelected: (int selectedItem){
+                                  setState(() {
+                                    onSelected(selectedItem);
+                                  });
                                 },
                                 icon: const Icon(Icons.more_vert),
                                 itemBuilder: (context){
                                   return [
-                                    PopupMenuItem(
-                                      child: const Text(
-                                        'حذف',
-                                        style:TextStyle(
-                                          fontSize: 16,
-                                          fontFamily: MangerFonts.cairo,
-                                        ),
-                                      ),
-                                      onTap: (){},
-                                    ),
-                                    const PopupMenuDivider(),
-                                    PopupMenuItem(
-                                      child: const Text(
-                                        'تعديل',
+                                    const PopupMenuItem(
+                                      value: 0,
+                                      child:  Text(
+                                        MangerString.edite,
                                         style: TextStyle(
                                           fontFamily: MangerFonts.cairo,
                                           fontSize: 16,
                                         ),
                                       ),
-                                      onTap: (){},
+                                    ),
+                                    const PopupMenuDivider(),
+                                    const PopupMenuItem(
+                                      value : 1,
+                                      child:  Text(
+                                        MangerString.remove,
+                                        style:TextStyle(
+                                          fontSize: 16,
+                                          fontFamily: MangerFonts.cairo,
+                                        ),
+                                      ),
                                     ),
                                   ];
                                 },
@@ -124,7 +135,10 @@ class _HomeSupervisorScreenState extends State<HomeSupervisorScreen> {
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                               ),
+
                             ),
+
+
                           ),
                         ),
                       );
@@ -162,7 +176,7 @@ class _HomeSupervisorScreenState extends State<HomeSupervisorScreen> {
                               ),),
 
                             Text(
-                              MangerString.episodeName,
+                              MangerString.supervisor,
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 16,
@@ -188,30 +202,6 @@ class _HomeSupervisorScreenState extends State<HomeSupervisorScreen> {
               ),
 
               const DrawerItem(
-                title: MangerString.addPurchase,
-                icon: Icons.person_add,
-                routName: Routes.dailyLogScreen,
-              ),
-
-              const DrawerItem(
-                title: MangerString.monthly,
-                icon: Icons.calendar_view_month,
-                routName: Routes.dailyLogScreen,
-              ),
-
-              const DrawerItem(
-                title: MangerString.settings,
-                icon: Icons.settings,
-                routName: Routes.dailyLogScreen,
-              ),
-              const Divider(
-                height: 35,
-                endIndent: 15, indent: 15,
-                color:AppColor.buttonColor_1,
-                thickness: 1,
-              ),
-
-              const DrawerItem(
                 title: MangerString.logout,
                 icon: Icons.logout,
                 routName:Routes.loginScreen,
@@ -225,6 +215,71 @@ class _HomeSupervisorScreenState extends State<HomeSupervisorScreen> {
     )
     );
   }
+  void onSelected (select){
+    setState(() {
+      switch(select){
+        case 0 :
+          Navigator.pushNamed(context, Routes.editeEpisodeScreen);
+        break;
+
+        case 1 :
+          showAlertDialog(context);
+          break;
+      }
+    });
+  }
+
+
+  showAlertDialog(BuildContext context) {
+
+    // set up the button
+    Widget okButton = TextButton(
+      child: const Text(MangerString.yes,style: TextStyle(
+          fontFamily: MangerFonts.cairo,
+          color: AppColor.buttonColor_1,
+          fontSize: 18
+      ),),
+      onPressed: () {
+
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: const Directionality(
+        textDirection: TextDirection.rtl,
+        child: Text(
+          MangerString.removeEpisode,style: TextStyle(
+          fontFamily: MangerFonts.cairo,
+          color: AppColor.buttonColor_1,
+          fontSize: 18
+        ),),
+      ),
+      content: const Directionality(
+        textDirection: TextDirection.rtl,
+        child:  Text(
+            MangerString.massRemoveEpisode,
+             style: TextStyle(
+              fontFamily: MangerFonts.cairo,
+              color: Colors.black,
+              fontSize: 16
+          ),
+        ),
+      ),
+      actions: [
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
 }
 
 
